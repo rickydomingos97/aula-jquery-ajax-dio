@@ -1,4 +1,6 @@
 function consultaCep() {
+    $(".barra_progresso").show();
+
     var cep = document.getElementById("cep").value;
     var url = "https://viacep.com.br/ws/" + cep +"/json/";
     console.log(url);
@@ -12,13 +14,13 @@ function consultaCep() {
             $("#localidade").html(response.localidade);
             $("#uf").html(response.uf);
             $("#titulo_cep").html("CEP " + response.cep);
-
-            //Outra forma de fazer as chamadas ajax:
-            //document.getElementById("logradouro").innerHTML = response.logradouro;
-            //document.getElementById("bairro").innerHTML = response.bairro;
-            //document.getElementById("localidade").innerHTML = response.localidade;
-            //document.getElementById("uf").innerHTML = response.uf;
-            //alert(response.logradouro);
+            $(".cep").show();
+            $(".barra_progresso").hide();
         }
     })
 }
+
+$(function() {
+    $(".cep").hide();
+    $(".barra_progresso").hide();
+})
